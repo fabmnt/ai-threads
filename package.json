@@ -7,17 +7,23 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "ultracite lint",
-    "format": "ultracite format"
+    "format": "ultracite format",
+    "convex": "convex"
   },
   "dependencies": {
+    "@next/env": "^15.4.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "convex": "^1.25.4",
     "lucide-react": "^0.539.0",
     "next": "15.4.6",
+    "next-themes": "^0.4.6",
+    "radix-ui": "latest",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
-    "radix-ui": "latest"
+    "zod": "^4.0.16"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",

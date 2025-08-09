@@ -1,0 +1,12 @@
+import { z } from 'zod';
+
+// Validate only the public environment variables that are safe for the client.
+// Next.js injects NEXT_PUBLIC_* values at build time on both server and client,
+// so we can read them directly from process.env without using @next/env.
+const envSchema = z.object({
+  NEXT_PUBLIC_CONVEX_URL: z.string().min(1, 'Missing NEXT_PUBLIC_CONVEX_URL'),
+});
+
+export const env = envSchema.parse({
+  NEXT_PUBLIC_CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL,
+});

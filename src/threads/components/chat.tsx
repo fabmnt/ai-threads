@@ -2,7 +2,10 @@
 
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
+import { useQuery } from 'convex/react';
 import { useState } from 'react';
+import { api } from '@/convex/_generated/api';
+import type { Id } from '@/convex/_generated/dataModel';
 
 interface ChatProps {
   characterId: string;
@@ -10,6 +13,9 @@ interface ChatProps {
 
 export default function Chat({ characterId }: ChatProps) {
   const [input, setInput] = useState('');
+  const character = useQuery(api.characters.getCharacterById, {
+    id: characterId as Id<'characters'>,
+  });
   const { messages, sendMessage } = useChat({
     transport: new DefaultChatTransport({
       body: {
@@ -21,7 +27,9 @@ export default function Chat({ characterId }: ChatProps) {
     <div className="stretch mx-auto flex w-full max-w-md flex-col py-24">
       {messages.map((message) => (
         <div className="whitespace-pre-wrap" key={message.id}>
-          {message.role === 'user' ? 'User: ' : 'AI: '}
+          {message.role === 'user'
+            ? 'User: '
+            : `@${character?.character_username}: `}
           {message.parts.map((part, i) => {
             switch (part.type) {
               case 'text':

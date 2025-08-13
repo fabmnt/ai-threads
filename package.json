@@ -11,7 +11,10 @@
     "convex": "convex"
   },
   "dependencies": {
+    "@ai-sdk/react": "^2.0.11",
     "@next/env": "^15.4.6",
+    "@openrouter/ai-sdk-provider": "^1.1.2",
+    "ai": "^5.0.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "convex": "^1.25.4",

@@ -5,8 +5,12 @@ import { z } from 'zod';
 // so we can read them directly from process.env without using @next/env.
 const envSchema = z.object({
   NEXT_PUBLIC_CONVEX_URL: z.string().min(1, 'Missing NEXT_PUBLIC_CONVEX_URL'),
+  OPENROUTER_API_KEY: z
+    .string()
+    .min(1, 'Missing NEXT_PUBLIC_OPENROUTER_API_KEY'),
 });
 
 export const env = envSchema.parse({
   NEXT_PUBLIC_CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL,
+  NEXT_PUBLIC_OPENROUTER_API_KEY: process.env.NEXT_PUBLIC_OPENROUTER_API_KEY,
 });

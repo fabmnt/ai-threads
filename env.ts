@@ -13,7 +13,4 @@ const envSchema = z.object({
     .min(1, 'Missing NEXT_PUBLIC_OPENROUTER_API_KEY'),
 });
 
-export const env = envSchema.parse({
-  NEXT_PUBLIC_CONVEX_URL: process.env.NEXT_PUBLIC_CONVEX_URL,
-  NEXT_PUBLIC_OPENROUTER_API_KEY: process.env.NEXT_PUBLIC_OPENROUTER_API_KEY,
-});
+export const env = envSchema.parse(process.env);

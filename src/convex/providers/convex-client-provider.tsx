@@ -1,8 +1,8 @@
 'use client';
 import { ConvexProvider, ConvexReactClient } from 'convex/react';
-import { env } from '@/env';
 
-const convex = new ConvexReactClient(env.NEXT_PUBLIC_CONVEX_URL);
+// biome-ignore lint/style/noNonNullAssertion: env exists
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export function ConvexClientProvider({
   children,

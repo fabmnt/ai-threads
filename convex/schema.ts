@@ -23,5 +23,6 @@ export default defineSchema({
   messages: defineTable({
     thread: v.id('threads'),
     content: v.string(),
+    role: v.union(v.literal('user'), v.literal('assistant')),
   }),
 });

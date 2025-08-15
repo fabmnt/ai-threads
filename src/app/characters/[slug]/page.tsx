@@ -1,6 +1,6 @@
 import { fetchQuery } from 'convex/nextjs';
 import { api } from '@/convex/_generated/api';
-import Chat from '@/src/threads/components/chat';
+import { ThreadChat } from '@/src/threads/components/thread-chat';
 
 interface CharacterPageProps {
   params: Promise<{
@@ -18,10 +18,16 @@ export default async function CharacterPage({ params }: CharacterPageProps) {
     return <div>Character not found</div>;
   }
 
+  const threads = await fetchQuery(api.threads.getCharacterThreads, {
+    characterId: character._id,
+  });
+
   return (
     <div className="container mx-auto px-4">
       <section>
-        <Chat characterId={character._id} />
+        {threads.map((thread) => (
+          <ThreadChat key={thread._id} threadId={thread._id} />
+        ))}
       </section>
     </div>
   );
